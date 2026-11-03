@@ -27,7 +27,7 @@ addProject:p=>set(s=>({projects:[p,...s.projects]})),updateProject:(id,p)=>set(s
 addTask:t=>set(s=>({tasks:[t,...s.tasks]})),updateTask:(id,t)=>set(s=>({tasks:s.tasks.map(x=>x.id===id?{...x,...t}:x)})),
 saveDashboard:d=>set(s=>({dashboards:s.dashboards.some(x=>x.id===d.id)?s.dashboards.map(x=>x.id===d.id?d:x):[d,...s.dashboards]})),
 addChat:c=>set(s=>({chats:[c,...s.chats]})),updateChat:(id,messages)=>set(s=>({chats:s.chats.map(c=>c.id===id?{...c,messages}:c)})),
-reset:()=>{localStorage.removeItem('lab-cd-wizard');set({projects:initialProjects,tasks:initialTasks,dashboards:initialDashboards,chats:[],role:'Руководитель',objectives:[],onboarded:false});}
+reset:()=>{localStorage.removeItem('lab-cd-wizard');set({projects:initialProjects,tasks:initialTasks,dashboards:initialDashboards,chats:[],role:'Руководитель',objectives:[],onboarded:false,collapsed:false});}
 }),{name:'lab-cd-demo-v1',version:1}));
 export const uid=()=>crypto.randomUUID();
 export const asset=(name:string)=>`${import.meta.env.BASE_URL}assets/${name}`;
