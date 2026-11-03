@@ -67,3 +67,6 @@
 .project-content-sources>.project-table-scroll{height:490px;max-height:490px}
 .project-content-documents>.project-table-scroll{height:560px;max-height:560px}
 .project-content-decisions>.project-table-scroll,.project-content-automations>.project-table-scroll{height:410px;max-height:410px}
+
+/* Keep the project frame independent of the root scrollbar (5px). */
+.project-page{width:min(1600px,calc(100vw - var(--sidebar-width) - 5px));margin-inline:max(0px,calc((100vw - var(--sidebar-width) - 1605px)/2))}
