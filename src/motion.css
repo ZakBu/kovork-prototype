@@ -67,3 +67,6 @@ body { overscroll-behavior-y: none; }
 }
 
 .chat-chart .chat-population-chart { height: 128px; width: 100%; }
+
+/* Inside a section, the child owns the filled selection. */
+.nav-item.nav-parent-active,.nav-item.nav-parent-active:hover{color:var(--pink);background:transparent;font-weight:550;box-shadow:none}
