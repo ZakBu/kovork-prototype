@@ -92,3 +92,10 @@ body { overscroll-behavior-y: none; }
 .nav-child.nav-child-active:hover,.nav-item.nav-active:hover,.nav-child-row.is-active:hover{background:var(--pink-light);color:var(--pink)}
 
 .sidebar-menu-danger{color:#dc2648}.sidebar-menu-danger[data-highlighted]{color:#be1737;background:#fff0f2}.btn-destructive{background:#dc2648;color:white}.btn-destructive:hover{background:#c51e3d}
+
+/* One selection surface glides between navigation destinations. */
+.sidebar nav{position:relative;isolation:isolate}
+.nav-selection{position:absolute;left:0;right:0;pointer-events:none;z-index:-1;background:var(--pink-light);border-radius:12px;transform-origin:top;opacity:0;transition:opacity 160ms var(--motion-ease)}
+.sidebar nav .nav-item.nav-active,.sidebar nav .nav-item.nav-active:hover,.sidebar nav .nav-child-active,.sidebar nav .nav-child-active:hover,.sidebar nav .nav-child-row.is-active,.sidebar nav .nav-child-row.is-active:hover{background:transparent}
+.nav-children{animation:nav-children-reveal 220ms var(--motion-ease)}
+@keyframes nav-children-reveal{from{opacity:0;translate:0 -4px}to{opacity:1;translate:0 0}}
