@@ -70,3 +70,23 @@ body { overscroll-behavior-y: none; }
 
 /* Inside a section, the child owns the filled selection. */
 .nav-item.nav-parent-active,.nav-item.nav-parent-active:hover{color:var(--pink);background:transparent;font-weight:550;box-shadow:none}
+
+/* Row actions reserve their space; revealing the menu never shifts a title. */
+.nav-child-row{position:relative;min-width:0;border-radius:10px}
+.nav-child-row:hover{background:#f7f7f9}
+.nav-child-row.is-active,.nav-child-row.is-active:hover{background:var(--pink-light)}
+.nav-child-row .nav-child{display:flex;align-items:center;gap:6px;min-width:0;padding-right:36px;background:transparent}
+.nav-child-label{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.nav-pin{flex:none;color:#ff4d6a}
+.nav-child-more.icon-btn{position:absolute;right:4px;top:50%;translate:0 -50%;width:27px;height:27px;opacity:0;pointer-events:none;background:transparent;color:#8d9199}
+.nav-child-row:hover .nav-child-more,.nav-child-row:focus-within .nav-child-more,.nav-child-row.has-menu .nav-child-more{opacity:1;pointer-events:auto}
+.nav-child-more.icon-btn:hover{background:#fff;color:#ff4d6a}
+.sidebar-menu-positioner{z-index:80}
+.sidebar-item-menu{min-width:190px;padding:5px;background:#fff;border:1px solid var(--border);border-radius:11px;box-shadow:0 10px 32px #28203518;transform-origin:var(--transform-origin);transition:opacity 140ms var(--motion-ease),scale 140ms var(--motion-ease)}
+.sidebar-item-menu[data-starting-style],.sidebar-item-menu[data-ending-style]{opacity:0;scale:.97}
+.sidebar-menu-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:7px;font-size:12px;color:#43474e;cursor:pointer;outline:none;transition:background-color 140ms,color 140ms}
+.sidebar-menu-item[data-highlighted]{color:#ff4d6a;background:#fff0f2}
+@media(hover:none){.nav-child-more.icon-btn{opacity:1;pointer-events:auto}}
+@media(prefers-reduced-motion:reduce){.sidebar-item-menu,.sidebar-menu-item{transition:none!important}}
+
+.nav-child.nav-child-active:hover,.nav-item.nav-active:hover,.nav-child-row.is-active:hover{background:var(--pink-light);color:var(--pink)}

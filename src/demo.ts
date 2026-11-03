@@ -1,10 +1,10 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-export type Project = { id:string; name:string; description:string; territory:string; status:string; progress:number; members:number; updated:string };
+export type Project = { id:string; name:string; description:string; territory:string; status:string; progress:number; members:number; updated:string; pinned?:boolean };
 export type Task = { id:string; projectId:string; title:string; description:string; status:string; priority:string; assignee:string; due:string };
 export type Dashboard = { id:string; name:string; description:string; theme:string; audience:string; period:string; sources:string[]; published:boolean; updated:string };
 export type Message = { id:string; role:'user'|'assistant'; text:string; kind?:string };
-export type Chat = { id:string; title:string; messages:Message[] };
+export type Chat = { id:string; title:string; messages:Message[]; pinned?:boolean };
 const initialProjects:Project[] = [
 {id:'zil',name:'Развитие территории «ЗИЛ-Юг»',description:'Комплексное развитие территории ЗИЛ-Юг с использованием данных, документов и AI-ассистента.',territory:'ЗИЛ-Юг, Москва',status:'Активный',progress:67,members:8,updated:'18 мин назад'},
 {id:'kalibr',name:'Реновация промзоны «Калибр»',description:'Преобразование промышленной территории в новый городской квартал.',territory:'Москва',status:'Активный',progress:42,members:5,updated:'2 ч назад'},
@@ -20,13 +20,14 @@ export interface DemoState { projects:Project[];tasks:Task[];dashboards:Dashboar
 setProfile:(role:string,objectives:string[])=>void;setCollapsed:(v:boolean)=>void;
 addProject:(p:Project)=>void;updateProject:(id:string,p:Partial<Project>)=>void;
 addTask:(t:Task)=>void;updateTask:(id:string,t:Partial<Task>)=>void;
-saveDashboard:(d:Dashboard)=>void;addChat:(c:Chat)=>void;updateChat:(id:string,messages:Message[])=>void;reset:()=>void; }
+saveDashboard:(d:Dashboard)=>void;addChat:(c:Chat)=>void;updateChat:(id:string,messages:Message[])=>void;updateChatMeta:(id:string,patch:Partial<Pick<Chat,'title'|'pinned'>>)=>void;reset:()=>void; }
 export const useDemo=create<DemoState>()(persist((set)=>({projects:initialProjects,tasks:initialTasks,dashboards:initialDashboards,chats:[],role:'Руководитель',objectives:[],onboarded:false,collapsed:false,
 setProfile:(role,objectives)=>set({role,objectives,onboarded:true}),setCollapsed:(collapsed)=>set({collapsed}),
 addProject:p=>set(s=>({projects:[p,...s.projects]})),updateProject:(id,p)=>set(s=>({projects:s.projects.map(x=>x.id===id?{...x,...p}:x)})),
 addTask:t=>set(s=>({tasks:[t,...s.tasks]})),updateTask:(id,t)=>set(s=>({tasks:s.tasks.map(x=>x.id===id?{...x,...t}:x)})),
 saveDashboard:d=>set(s=>({dashboards:s.dashboards.some(x=>x.id===d.id)?s.dashboards.map(x=>x.id===d.id?d:x):[d,...s.dashboards]})),
 addChat:c=>set(s=>({chats:[c,...s.chats]})),updateChat:(id,messages)=>set(s=>({chats:s.chats.map(c=>c.id===id?{...c,messages}:c)})),
+updateChatMeta:(id,patch)=>set(s=>({chats:s.chats.map(c=>c.id===id?{...c,...patch}:c)})),
 reset:()=>{localStorage.removeItem('lab-cd-wizard');set({projects:initialProjects,tasks:initialTasks,dashboards:initialDashboards,chats:[],role:'Руководитель',objectives:[],onboarded:false,collapsed:false});}
 }),{name:'lab-cd-demo-v1',version:1}));
 export const uid=()=>crypto.randomUUID();
