@@ -45,3 +45,109 @@
 @media(max-width:1200px){.dash-settings-content,.dash-settings-content>.dash-settings-form,.dash-settings-content>.dash-visual-controls{min-block-size:156px}}
 @media(max-width:760px){.dash-wizard>.dash-step-heading{min-block-size:100px;margin-bottom:18px}.dash-wizard-footer{flex-basis:70px;min-height:70px;padding-top:14px}.dash-wizard-footer>.btn{min-inline-size:125px;font-size:10px;min-height:36px}.dash-wizard-footer>.muted{max-width:155px;text-align:right;font-size:9px;line-height:1.5}.dash-settings-content,.dash-settings-content>.dash-settings-form,.dash-settings-content>.dash-visual-controls{min-block-size:190px}.dash-widget-settings-top>p{min-block-size:30px}.dash-step-body{padding-bottom:20px}.dash-source-status>.btn{inline-size:112px}}
 @media(prefers-reduced-motion:reduce){.dash-step-body,.dash-step-heading,.dash-settings-content,.dash-board-content>.is-active{animation:none!important}.dash-progress-track>circle:last-child{transition:none!important}}
+
+/* Desktop demo frame: every section owns its overflow, the document never grows. */
+@media(min-width:1100px){
+ .dash-gallery{height:100dvh;min-height:0;display:flex;flex-direction:column;padding:32px 54px;overflow:hidden}
+ .dash-gallery-heading{flex:none;margin-bottom:22px}
+ .dash-gallery-heading h1{font-size:clamp(29px,2.2vw,40px)}
+ .dash-gallery-heading p{font-size:12px;margin-top:9px}
+ .dash-gallery>.dash-prompt-large{flex:none;min-height:104px;padding:15px 18px}
+ .dash-gallery>.dash-prompt-large textarea{font-size:12px;min-height:35px}
+ .dash-gallery>.dash-prompt-large .dash-prompt-actions{margin-top:8px}
+ .dash-gallery>.dash-quick-grid{flex:none;gap:10px;margin:20px 0 12px}
+ .dash-gallery .dash-quick{min-height:90px;padding:12px 16px}
+ .dash-gallery .dash-quick .dash-icon{width:29px;height:29px;margin-bottom:8px}
+ .dash-gallery .dash-quick strong{font-size:11px}
+ .dash-gallery .dash-quick>span:not(.dash-icon){font-size:9px;margin-top:4px}
+ .dash-gallery>.dash-recent{flex:1;min-height:0;display:flex;flex-direction:column;padding:16px;overflow:hidden}
+ .dash-gallery .dash-section-heading{flex:none;margin-bottom:12px}
+ .dash-gallery .dash-dashboard-cards{flex:1;min-height:0;grid-auto-rows:minmax(190px,1fr);overflow:auto}
+ .dash-gallery .dash-dashboard-card{min-height:0;padding:11px;overflow:hidden}
+ .dash-gallery .dash-dashboard-card>img{flex:1;min-height:50px;max-height:min(17dvh,185px);height:100%;aspect-ratio:auto;object-fit:cover;margin-bottom:10px}
+ .dash-gallery .dash-dashboard-card>strong,.dash-gallery .dash-dashboard-card>p,.dash-gallery .dash-dashboard-card>span{flex:none}
+ .dash-gallery .dash-dashboard-card>strong{font-size:11px}
+ .dash-gallery .dash-dashboard-card>p{font-size:9px;min-height:28px;line-height:1.4}
+ .dash-gallery .dash-dashboard-card>span{font-size:9px;padding-top:10px}
+ .dash-gallery .dash-search{flex:none;margin:0 0 12px}
+ .dash-editor{height:100dvh;min-height:0;overflow:hidden}
+ .dash-editor-main{height:100%;min-height:0;display:grid;grid-template-rows:42px minmax(0,1fr) minmax(150px,21dvh) 48px;gap:10px;padding:12px 24px 16px 40px;overflow:hidden}
+ .dash-editor-main>.dash-editor-heading{min-height:0;padding-top:0;padding-bottom:0}
+ .dash-editor-main>.dash-widget-settings{height:100%;min-height:0;padding:12px 18px;display:flex;flex-direction:column;overflow:hidden}
+ .dash-editor-main .dash-widget-settings-top{flex:none;min-height:32px;margin-bottom:8px}
+ .dash-editor-main .dash-widget-settings-top>p{min-height:24px}
+ .dash-editor-main .dash-widget-settings-top nav>button{padding-top:5px;padding-bottom:9px}
+ .dash-editor-main .dash-settings-content{flex:1;min-block-size:0;overflow:auto;scrollbar-gutter:stable}
+ .dash-editor-main .dash-settings-content>.dash-settings-form,.dash-editor-main .dash-settings-content>.dash-visual-controls{min-block-size:112px}
+ .dash-editor-main>.dash-editor-ai{min-height:0;margin:0;position:relative}
+ .dash-editor-ai>.dash-ai-result{position:absolute;bottom:calc(100% + 8px);left:0;right:0;z-index:3;box-shadow:0 5px 22px #1724390c}
+ .dash-editor .dash-board{height:100%;min-height:0;display:flex;flex-direction:column;overflow:hidden}
+ .dash-editor .dash-board-top{flex:none}
+ .dash-editor .dash-kpi-grid{flex:none;min-height:0}
+ .dash-editor .dash-kpi{min-height:0;padding-top:8px;padding-bottom:7px}
+ .dash-editor .dash-sparkline{height:clamp(22px,3.5dvh,38px)}
+ .dash-editor .dash-board-content{flex:1;min-height:0}
+ .dash-editor .dash-widget-grid{height:100%;min-height:0;grid-template-rows:minmax(0,.95fr) minmax(0,1.05fr);margin-top:6px}
+ .dash-editor .dash-widget{min-height:0;display:flex;flex-direction:column;padding:7px 7px 4px;overflow:hidden}
+ .dash-editor .dash-widget-title{flex:none;min-height:22px}
+ .dash-editor .dash-widget .dash-chart{height:auto;flex:1;min-height:44px}
+ .dash-editor .dash-widget-total{flex:none;min-height:13px}
+ .dash-editor .dash-board-foot{flex:none;min-height:15px}
+ .dash-comments{height:100%;min-height:0;position:relative;overflow:hidden;padding-top:20px}
+ .dash-comments-tabs,.dash-comment-input,.dash-replying{flex:none}
+ .dash-ai-task{min-height:0;overflow:auto}
+ .dash-audience-page{height:100dvh;min-height:0;overflow:hidden}
+ .dash-audience-work,.dash-brief{min-height:0;overflow:auto}
+ .dash-published{height:100dvh;min-height:0;overflow:hidden}
+ .dash-publication{height:100%;min-height:0;display:flex;flex-direction:column;gap:14px;padding:24px 44px;overflow:hidden}
+ .dash-publication-heading{flex:none;margin-bottom:0}
+ .dash-publication-heading h1{font-size:30px}
+ .dash-publication-heading>div>p{margin-top:8px;font-size:11px}
+ .dash-publish-meta{margin-top:9px}
+ .dash-publication-grid{flex:1;min-height:0;align-items:stretch}
+ .dash-preview-board{height:100%;min-height:0;display:flex;overflow:hidden;align-self:stretch}
+ .dash-preview-board>.dash-board{flex:1}
+ .dash-publication-grid>aside{height:100%;min-height:0;display:grid;grid-template-rows:minmax(0,1fr) minmax(0,1fr);gap:12px}
+ .dash-publication-params,.dash-next-actions{min-height:0;overflow:auto;padding:16px}
+ .dash-publication-ai{flex:none;margin:0;padding:12px 16px}
+ .dash-publication-ai>div>.dash-icon{width:32px;height:32px}
+ .dash-publication-ai h3{font-size:12px}
+ .dash-publication-ai p{font-size:10px;margin-top:3px}
+ .dash-publication-ai>.dash-prompt{margin-top:8px}
+ .dash-publication-ai .dash-prompt textarea{padding:10px 13px}
+ .dash-publication-bottom{flex:none;margin:0;min-height:36px}
+ .dash-publication-ai>.dash-inline-note{max-height:50px;overflow:auto}
+}
+@media(min-width:1100px) and (max-height:800px){
+ .dash-gallery{padding:22px 36px}
+ .dash-gallery-heading{margin-bottom:16px}
+ .dash-gallery-heading h1{font-size:29px}
+ .dash-gallery-heading p{font-size:11px;margin-top:7px}
+ .dash-gallery>.dash-prompt-large{min-height:92px;padding:12px 16px}
+ .dash-gallery>.dash-prompt-large textarea{min-height:30px;font-size:11px}
+ .dash-gallery>.dash-quick-grid{margin-top:14px;gap:8px}
+ .dash-gallery .dash-quick{min-height:80px;padding:10px 13px}
+ .dash-gallery .dash-quick .dash-icon{width:25px;height:25px;margin-bottom:6px}
+ .dash-gallery .dash-quick .dash-icon svg{width:16px}
+ .dash-gallery>.dash-recent{padding:13px}
+ .dash-gallery .dash-dashboard-cards{grid-auto-rows:minmax(175px,1fr)}
+ .dash-gallery .dash-dashboard-card{padding:9px}
+ .dash-gallery .dash-dashboard-card>img{margin-bottom:8px;max-height:13dvh}
+ .dash-gallery .dash-dashboard-card>span{font-size:8px;padding-top:7px}
+ .dash-editor-main{grid-template-rows:38px minmax(0,1fr) 152px 46px;padding:10px 18px 12px 24px;gap:8px}
+ .dash-editor-main>.dash-widget-settings{padding:9px 15px}
+ .dash-editor .dash-kpi>strong{font-size:19px}
+ .dash-editor .dash-kpi>div{min-height:14px}
+ .dash-editor .dash-kpi-note{padding-top:3px;margin-top:0}
+ .dash-editor .dash-sparkline{height:23px;margin-top:2px;margin-bottom:0}
+ .dash-editor .dash-widget-title{min-height:19px}
+ .dash-editor .dash-widget-title>div>span{margin-top:1px}
+ .dash-publication{padding:20px 32px;gap:10px}
+ .dash-publication-heading h1{font-size:26px}
+ .dash-publication-heading>div>p{font-size:10px;margin-top:7px}
+ .dash-publication-ai{padding:10px 14px}
+ .dash-publication-ai>.dash-prompt{margin-top:5px}
+ .dash-publication-ai .dash-prompt textarea{padding:8px 11px}
+ .dash-publication-params h3,.dash-next-actions h3{margin-bottom:10px}
+ .dash-publication-params>div{padding:8px 0}
+}

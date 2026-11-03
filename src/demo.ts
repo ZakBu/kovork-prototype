@@ -18,12 +18,12 @@ const initialTasks:Task[] = ['Проверить соответствие ген
 const initialDashboards:Dashboard[]=[{id:'waste',name:'Мониторинг вывоза отходов',description:'Оперативный дашборд по вывозу отходов за 7 дней',theme:'dark',audience:'Руководитель',period:'7 дней',sources:['Цифровой двойник Москвы','Мос.Дата'],published:true,updated:'Сегодня'},{id:'education',name:'Контроль качества образования',description:'Рейтинг образовательных организаций',theme:'light',audience:'Аналитик',period:'30 дней',sources:['Мос.Дата'],published:true,updated:'Вчера'},{id:'kpi',name:'Аналитика KPI',description:'План/факт и ключевые показатели',theme:'light',audience:'Руководитель',period:'7 дней',sources:['Внутренние системы'],published:false,updated:'Вчера'},{id:'resources',name:'Ресурсная загруженность',description:'Загрузка транспорта и объектов перевозки по времени',theme:'dark',audience:'Диспетчер',period:'7 дней',sources:['Мос.Дата'],published:true,updated:'2 дня назад'}];
 export interface DemoState { projects:Project[];tasks:Task[];dashboards:Dashboard[];chats:Chat[]; role:string;objectives:string[];onboarded:boolean;collapsed:boolean;
 setProfile:(role:string,objectives:string[])=>void;setCollapsed:(v:boolean)=>void;
-addProject:(p:Project)=>void;updateProject:(id:string,p:Partial<Project>)=>void;
+addProject:(p:Project)=>void;deleteProject:(id:string)=>void;deleteChat:(id:string)=>void;updateProject:(id:string,p:Partial<Project>)=>void;
 addTask:(t:Task)=>void;updateTask:(id:string,t:Partial<Task>)=>void;
 saveDashboard:(d:Dashboard)=>void;addChat:(c:Chat)=>void;updateChat:(id:string,messages:Message[])=>void;updateChatMeta:(id:string,patch:Partial<Pick<Chat,'title'|'pinned'>>)=>void;reset:()=>void; }
 export const useDemo=create<DemoState>()(persist((set)=>({projects:initialProjects,tasks:initialTasks,dashboards:initialDashboards,chats:[],role:'Руководитель',objectives:[],onboarded:false,collapsed:false,
 setProfile:(role,objectives)=>set({role,objectives,onboarded:true}),setCollapsed:(collapsed)=>set({collapsed}),
-addProject:p=>set(s=>({projects:[p,...s.projects]})),updateProject:(id,p)=>set(s=>({projects:s.projects.map(x=>x.id===id?{...x,...p}:x)})),
+addProject:p=>set(s=>({projects:[p,...s.projects]})),deleteProject:id=>set(s=>({projects:s.projects.filter(p=>p.id!==id),tasks:s.tasks.filter(t=>t.projectId!==id)})),deleteChat:id=>set(s=>({chats:s.chats.filter(c=>c.id!==id)})),updateProject:(id,p)=>set(s=>({projects:s.projects.map(x=>x.id===id?{...x,...p}:x)})),
 addTask:t=>set(s=>({tasks:[t,...s.tasks]})),updateTask:(id,t)=>set(s=>({tasks:s.tasks.map(x=>x.id===id?{...x,...t}:x)})),
 saveDashboard:d=>set(s=>({dashboards:s.dashboards.some(x=>x.id===d.id)?s.dashboards.map(x=>x.id===d.id?d:x):[d,...s.dashboards]})),
 addChat:c=>set(s=>({chats:[c,...s.chats]})),updateChat:(id,messages)=>set(s=>({chats:s.chats.map(c=>c.id===id?{...c,messages}:c)})),

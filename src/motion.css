@@ -90,3 +90,5 @@ body { overscroll-behavior-y: none; }
 @media(prefers-reduced-motion:reduce){.sidebar-item-menu,.sidebar-menu-item{transition:none!important}}
 
 .nav-child.nav-child-active:hover,.nav-item.nav-active:hover,.nav-child-row.is-active:hover{background:var(--pink-light);color:var(--pink)}
+
+.sidebar-menu-danger{color:#dc2648}.sidebar-menu-danger[data-highlighted]{color:#be1737;background:#fff0f2}.btn-destructive{background:#dc2648;color:white}.btn-destructive:hover{background:#c51e3d}

@@ -1,0 +1,66 @@
+/* Desktop workspace: the screen is fixed; unbounded lists scroll in their panes. */
+@media(min-width:1100px){
+  .main-content>.standard-page{height:100dvh;min-height:0;display:flex;flex-direction:column;padding:clamp(20px,3vh,40px) clamp(24px,3vw,60px);overflow:hidden}
+  .standard-page>.page-header{flex:none;margin-bottom:clamp(12px,2vh,24px)}
+  .standard-page .page-header h1{font-size:clamp(24px,2.5vw,30px)}
+  .standard-page>.toolbar{flex:none;margin:0 0 16px}
+  .standard-page .integration-grid{flex:1;min-height:0;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:minmax(0,1fr);gap:14px;overflow:auto}
+  .standard-page .integration-card{padding:clamp(14px,2vh,22px);display:flex;flex-direction:column;min-height:0}
+  .standard-page .integration-card-top{margin-bottom:14px}
+  .standard-page .integration-symbol{width:38px;height:38px;font-size:21px}
+  .standard-page .integration-card>p{font-size:11px;min-height:30px}
+  .standard-page .integration-card-bottom{margin-top:auto;padding-top:12px;gap:6px}
+  .standard-page .integration-card h3{font-size:14px}
+  .standard-page .settings-panel{min-height:0;overflow:auto}
+  .standard-page .help-grid{flex:1;min-height:0;gap:14px;grid-template-rows:repeat(2,minmax(0,1fr))}
+  .standard-page .help-card{padding:clamp(14px,2vh,24px);min-height:0}
+  .standard-page .help-card h3{margin:12px 0 7px}
+  .standard-page .help-card p{font-size:12px;line-height:1.6}
+  .standard-page .help-card .pink-link{margin-top:auto;padding-top:10px}
+  .standard-page .help-card .feature-icon{width:36px;height:36px}
+  .standard-page .help-note{flex:none;margin-top:14px;padding:14px 18px}
+  .main-content>.auto-page{height:100dvh;min-height:0;display:flex;flex-direction:column;padding:clamp(20px,3vh,40px) clamp(24px,3vw,60px);overflow:hidden}
+  .auto-page>.page-header{flex:none;margin-bottom:16px}
+  .auto-page>.auto-intro{flex:none;padding:18px 22px}
+  .auto-page>.toolbar{flex:none;margin:16px 0}
+  .auto-page>.auto-list{flex:1;min-height:0;grid-template-columns:repeat(3,minmax(0,1fr));overflow:auto;gap:14px}
+  .auto-page .auto-flow-card{min-height:0;display:flex;flex-direction:column}
+  .auto-page .auto-flow-card>footer{margin-top:auto}
+  .auto-page>.auto-benefits{flex:none;margin-top:16px;padding:12px}
+  .auto-page>.auto-benefits>div{padding:12px}
+  .main-content>.auto-editor-page{height:100dvh;min-height:0;display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:14px;padding:clamp(16px,2.5vh,30px) clamp(20px,2.5vw,40px);overflow:hidden}
+  .auto-editor-page>.auto-editor-header{margin-bottom:0;min-height:52px}
+  .auto-editor-page>.auto-workspace{min-height:0;grid-template-columns:clamp(180px,13vw,250px) minmax(0,1fr) clamp(220px,17vw,310px);gap:14px;align-items:stretch}
+  .auto-workspace>.auto-request-panel,.auto-workspace>.auto-results{height:100%;min-height:0;overflow:auto;padding:16px}
+  .auto-workspace>.auto-results{display:flex;grid-column:auto;grid-row:auto;gap:0}
+  .auto-workspace>.auto-canvas-panel{height:100%;min-height:0;display:flex;flex-direction:column}
+  .auto-canvas-panel>.auto-canvas-heading,.auto-canvas-panel>.auto-canvas-toolbar{flex:none}
+  .auto-canvas-panel>.auto-canvas-heading{padding:16px 18px 10px}
+  .auto-canvas-panel>.auto-canvas{flex:1;height:auto;min-height:150px}
+  .auto-canvas-panel>.auto-inspector-slot{flex:0 0 clamp(156px,22vh,230px);height:clamp(156px,22vh,230px);min-height:0}
+  .auto-workspace .auto-inspector{padding:14px 18px}
+  .auto-workspace .auto-inspector .field{margin:8px 0}
+  .auto-workspace .auto-results>header{margin-bottom:14px}
+  .auto-workspace .auto-result-state{min-height:64px;padding:12px}
+  .auto-workspace .auto-result-label{margin:14px 0 10px}
+  .auto-workspace .auto-alert{padding:14px;gap:10px}
+  .auto-workspace .auto-run-log{min-height:0;overflow:auto;margin-top:16px}
+  .auto-workspace .auto-result-note{padding-top:10px}
+  .auto-editor-page>.auto-benefits{margin:0;padding:10px;gap:12px}
+  .auto-editor-page>.auto-benefits>div{padding:10px 14px}
+  .onboarding-page{height:100dvh;min-height:0;padding:clamp(22px,4vh,60px) max(4vw,36px);overflow:hidden}
+  .onboarding-page>header{flex:none}
+  .onboarding-page .onboarding-step{flex:none;margin-top:clamp(16px,3vh,36px)}
+  .onboarding-page .onboarding-title{flex:none;margin-top:clamp(16px,3vh,36px)}
+  .onboarding-page .onboarding-title h1{font-size:clamp(28px,3vw,44px);margin-bottom:10px}
+  .onboarding-page .onboarding-title p{font-size:clamp(12px,1vw,16px)}
+  .onboarding-page .onboarding-grid{flex:1;min-height:0;margin:clamp(16px,3vh,40px) 0;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:clamp(12px,2vh,24px)}
+  .onboarding-page .onboarding-grid>button{min-height:0;padding:clamp(14px,2vh,24px);gap:7px}
+  .onboarding-page .onboarding-card-icon{width:clamp(32px,4vh,48px);height:clamp(32px,4vh,48px);margin-bottom:0}
+  .onboarding-page .onboarding-grid strong{font-size:clamp(13px,1.2vw,17px)}
+  .onboarding-page .onboarding-grid small{font-size:clamp(10px,1vw,13px)}
+  .onboarding-page>footer{flex:none;margin-top:0}
+  .onboarding-page .onboarding-success{padding:20px 0}
+  .onboarding-page .onboarding-success-glow{margin:24px auto 48px;width:100px;height:100px}
+  .onboarding-page .onboarding-success-chips{margin:28px 0}
+}

@@ -70,3 +70,108 @@
 
 /* Keep the project frame independent of the root scrollbar (5px). */
 .project-page{width:min(1600px,calc(100vw - var(--sidebar-width) - 5px));margin-inline:max(0px,calc((100vw - var(--sidebar-width) - 1605px)/2))}
+
+/* Desktop workspaces use the viewport; long material scrolls in its own pane. */
+@media(min-width:1100px){
+.project-page{height:100dvh;min-height:0;box-sizing:border-box;padding:24px 36px 20px;display:flex;flex-direction:column;overflow:hidden}
+.project-page>.page-header{flex:none;margin:0 12px 22px;min-height:50px}
+.project-page>.project-header{flex:none;padding:4px 12px 17px;row-gap:11px}
+.project-page>.project-tabs{flex:none;min-height:36px}
+.project-page>.project-content{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;padding:18px}
+.project-page>.project-list-panel{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain}
+.project-list-head{position:sticky;top:0;z-index:2;background:white}
+.project-page>.project-content-overview{overflow:hidden;grid-template-columns:minmax(0,1fr) clamp(220px,18vw,300px);gap:20px}
+.project-overview-main{min-height:0;display:grid;grid-template-rows:auto auto minmax(0,1fr) auto 108px}
+.project-overview-main>p{margin:3px 0 12px;line-height:1.4}
+.project-overview-main>.project-map{height:auto;min-height:0}
+.project-overview-main>.project-section-head{margin:12px 0 9px;min-height:27px;gap:7px}
+.project-overview-main>.project-section-head h3{font-size:12px;white-space:nowrap}
+.project-overview-main>.project-section-head .project-pills{flex-wrap:nowrap;min-height:26px;margin:0 auto 0 2px}
+.project-overview-main>.project-section-head .project-pills button{min-height:24px;font-size:9px;padding:3px 6px;white-space:nowrap}
+.project-overview-main>.project-section-head>a{font-size:10px;white-space:nowrap}
+.project-recent-docs{min-height:0;gap:8px}
+.project-recent-docs>button{min-height:0;padding:10px;overflow:auto}
+.project-recent-docs strong{margin-top:7px;font-size:10px}
+.project-recent-docs small{font-size:8px}
+.project-recent-docs .project-file-icon{height:27px;width:27px;flex:none}
+.project-overview-aside{min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;padding-right:2px}
+.project-overview-aside>.panel{padding:13px;margin-bottom:10px;border-radius:15px}
+.project-overview-aside .panel-heading{margin-bottom:9px}
+.project-overview-aside .panel-heading h3{font-size:12px}
+.project-activity>div{margin:12px 0;gap:7px}
+.project-activity strong{font-size:10px}
+.project-activity small{font-size:9px;margin-top:3px}
+.project-activity-icon{width:24px;height:24px}
+.project-connections{gap:3px}
+.project-connections>button{font-size:11px;padding:5px 0}
+.project-overview-aside>.project-section-head{margin:8px 0}
+.project-team-legend{margin-top:8px;gap:5px;font-size:9px}
+.project-map-layers{max-height:calc(100% - 70px);overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;padding:10px 11px;width:160px;font-size:9px}
+.project-map-layers strong{margin-bottom:8px;font-size:10px}
+.project-map-layers label{margin:7px 0}
+.project-map-layers button{margin-top:10px}
+.project-map-metrics{max-height:calc(100% - 110px);overflow:auto;scrollbar-width:thin;width:164px;padding:11px;font-size:8px}
+.project-map-metrics strong{font-size:10px;margin-bottom:9px}
+.project-map-metrics>div{margin:8px 0}
+.project-map-prompt{left:12%;right:12%;bottom:10px;min-width:0;padding:7px 9px 6px}
+.project-map-prompt>div button{font-size:7px;padding:4px;white-space:nowrap}
+.project-map-prompt input{font-size:10px;padding:6px 3px}
+.project-content-tasks,.project-content-sources,.project-content-documents,.project-content-decisions,.project-content-automations,.project-content-packages{display:flex;flex-direction:column}
+.project-content-tasks>.project-section-head,.project-content-tasks>.project-pills,.project-content-sources>.project-section-head,.project-content-sources>.project-source-summary,.project-content-sources>.project-pills,.project-content-documents>.project-section-head,.project-content-documents>.project-pills,.project-content-decisions>.project-section-head,.project-content-decisions>.project-pills,.project-content-automations>.project-section-head,.project-content-automations>.project-pills,.project-content-packages>.project-section-head,.project-content-packages>.project-pills{flex:none}
+.project-task-view{flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column}
+.project-task-view>.project-kanban,.project-task-view>.project-table-scroll{height:auto;max-height:none;min-height:0;flex:1;overflow:auto}
+.project-content-sources>.project-table-scroll,.project-content-documents>.project-table-scroll,.project-content-decisions>.project-table-scroll,.project-content-automations>.project-table-scroll{height:auto;max-height:none;min-height:110px;flex:1;overflow:auto}
+.project-kanban{margin-top:0}
+.project-content-automations>.project-log{flex:none;max-height:118px;overflow:auto;margin-top:12px;padding:12px!important}
+.project-content-automations>.project-log p{margin:7px 0}
+.project-source-summary{margin:12px 0;gap:10px}
+.project-source-summary .panel{padding:13px}
+.project-source-summary strong{font-size:20px;margin:2px 0}
+.project-content>.project-pills{margin:10px 0}
+.project-content>.project-section-head-main{margin-bottom:6px}
+.project-packages{min-height:0;overflow:auto;align-content:start;flex:1}
+.project-page>.project-content-chats{overflow:hidden}
+.project-chat-layout{height:calc(100% + 36px);min-height:0;margin:-18px}
+.project-chat{height:100%;min-height:0}
+.project-chat-list{min-height:0;overflow:auto}
+.project-chat-messages{min-height:0}
+.project-chat>header{flex:none;padding:17px 24px}
+.project-chat-composer{flex:none;margin:10px 22px 18px}
+.project-content-settings{scrollbar-gutter:stable}
+.project-content-settings>.project-section-head{position:sticky;top:-18px;background:white;z-index:2;padding:10px 0}
+}
+@media(min-width:1100px) and (max-height:800px){
+.project-page{padding:16px 24px 14px}
+.project-page>.project-header{padding:2px 10px 12px;row-gap:8px}
+.project-header h1{font-size:18px}
+.project-heading p{font-size:10px}
+.project-header-actions{gap:12px}
+.project-progress{width:160px}
+.project-progress>span{font-size:10px}
+.project-progress b{font-size:13px}
+.project-meta{gap:13px;font-size:10px}
+.project-page>.project-content{padding:14px}
+.project-overview-main{grid-template-rows:auto auto minmax(0,1fr) auto 91px}
+.project-overview-main>p{font-size:10px;margin-bottom:9px}
+.project-overview-main>h2{font-size:14px}
+.project-overview-main>.project-section-head{margin:8px 0 6px}
+.project-recent-docs>button{padding:8px}
+.project-recent-docs strong{font-size:9px;margin-top:5px}
+.project-recent-docs small{font-size:7px}
+.project-recent-docs .project-file-icon{width:23px;height:23px}
+.project-overview-aside>.panel{padding:10px;margin-bottom:8px}
+.project-activity>div{margin:9px 0}
+.project-activity small{display:none}
+.project-map-layers{top:9px;left:9px;width:145px;max-height:calc(100% - 64px)}
+.project-map-metrics{top:43px;right:9px;width:145px}
+.project-map-prompt{left:12%;right:10%;bottom:8px}
+.project-map-prompt>div button{font-size:6px;padding:3px}
+.project-chat-layout{height:calc(100% + 28px);margin:-14px}
+.project-source-summary .panel{padding:10px}
+.project-source-summary small{font-size:9px}
+.project-table td{height:56px;padding:9px 11px}
+.project-table th{padding:10px 11px}
+.project-content-settings>.project-section-head{top:-14px}
+}
+@media(min-width:1100px){.project-recent-docs strong{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;line-height:1.35}.project-recent-docs small{max-width:100%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}}
+@media(min-width:1100px) and (max-height:800px){.project-overview-aside .project-connections>button{padding:3px 0}.project-overview-aside .project-inline-link{margin-top:9px}.project-activity>div{margin:8px 0}}
