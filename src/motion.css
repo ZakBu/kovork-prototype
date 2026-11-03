@@ -1,0 +1,69 @@
+/* Motion changes feedback, never the dimensions of a control. */
+:root {
+  --motion-quick: 120ms;
+  --motion-control: 180ms;
+  --motion-panel: 240ms;
+  --motion-ease: cubic-bezier(.2,.8,.2,1);
+}
+html { scrollbar-gutter: stable; scroll-behavior: auto; }
+body { overscroll-behavior-y: none; }
+:is(button, a, [role="button"]):not([data-motion="off"]) {
+  touch-action: manipulation;
+  transition-property: background-color, border-color, color, box-shadow, opacity, scale;
+  transition-duration: var(--motion-control);
+  transition-timing-function: var(--motion-ease);
+}
+:where(button, [role="button"]):not(.react-flow__node):not(.react-flow__handle):not(:disabled):not([aria-disabled="true"]):active { scale: .98; }
+:where(.icon-btn, .chat-send, .project-send, .auto-request-send):not(:disabled):active { scale: .94; }
+:where(a.nav-item, a.nav-child):active { scale: .99; }
+:where(button, a, [role="button"]):focus-visible {
+  outline: 2px solid #ff7793;
+  outline-offset: 3px;
+}
+:where(input, textarea, select) {
+  transition: border-color var(--motion-control) var(--motion-ease), box-shadow var(--motion-control) var(--motion-ease), background-color var(--motion-control) var(--motion-ease);
+}
+:where(input, textarea, select):focus-visible { box-shadow: 0 0 0 3px #ff4d6a12; }
+.sidebar { transition: width var(--motion-panel) var(--motion-ease), transform var(--motion-panel) var(--motion-ease); }
+.main-content { transition: margin-left var(--motion-panel) var(--motion-ease); }
+.sidebar .brand, .sidebar .nav-item, .sidebar .nav-new, .sidebar .profile { overflow: hidden; }
+.profile-menu { transform-origin: bottom left; animation: menu-reveal var(--motion-control) var(--motion-ease); }
+.profile[aria-expanded="true"] > svg { rotate: 180deg; }
+.profile > svg { transition: rotate var(--motion-control) var(--motion-ease); }
+.nav-item.nav-active, .nav-child-active { box-shadow: inset 0 0 0 1px #ff4d6a04; }
+.modal-backdrop { transition: opacity var(--motion-panel) var(--motion-ease); }
+.modal-backdrop[data-starting-style], .modal-backdrop[data-ending-style] { opacity: 0; }
+.modal { transition: opacity var(--motion-panel) var(--motion-ease), scale var(--motion-panel) var(--motion-ease); }
+.modal[data-starting-style], .modal[data-ending-style] { opacity: 0; scale: .97; }
+.modal-backdrop[data-ending-style], .modal[data-ending-style] { transition-duration: 160ms; }
+.toast { animation: toast-settle var(--motion-panel) var(--motion-ease); }
+.toast button:hover { color: #ff4d6a; }
+.switch, .project-switch, .dash-switch { flex-shrink: 0; }
+.switch span, .project-switch span, .dash-switch > span { transition: transform var(--motion-control) var(--motion-ease); }
+.switch:active, .project-switch:active, .dash-switch:active { scale: 1; }
+/* Selecting a node must not move the canvas or the adjacent result panel. */
+.auto-inspector-slot { height: 246px; overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; }
+.auto-inspector-slot > .auto-canvas-hint { min-height: 100%; margin: 0; border: 0; border-radius: 0; padding: 24px; align-items: center; }
+.auto-inspector-slot > .auto-inspector { min-height: 100%; }
+.auto-inspector-slot > * { animation: detail-reveal var(--motion-control) var(--motion-ease); }
+.auto-canvas-heading > .btn { min-width: 145px; font-variant-numeric: tabular-nums; }
+.auto-node { transition: border-color var(--motion-control) var(--motion-ease), box-shadow var(--motion-control) var(--motion-ease), opacity var(--motion-control) var(--motion-ease); }
+.auto-node > header, .auto-node > footer { transition: background-color var(--motion-control) var(--motion-ease), color var(--motion-control) var(--motion-ease); }
+@media (hover: hover) {
+  .btn-primary:hover, .chat-send:hover, .auto-request-send:hover { box-shadow: 0 4px 14px #ff4d6a26; }
+  .icon-btn:hover { box-shadow: inset 0 0 0 1px #ff4d6a0c; }
+}
+@media (max-width: 760px) {
+  .main-content { transition: none; }
+  .auto-inspector-slot { height: 300px; }
+  .auto-canvas-heading > .btn { min-width: 145px; }
+}
+@keyframes menu-reveal { from { opacity: 0; scale: .97; translate: 0 4px; } to { opacity: 1; scale: 1; translate: 0 0; } }
+@keyframes toast-settle { from { opacity: 0; translate: 0 6px; } to { opacity: 1; translate: 0 0; } }
+@keyframes detail-reveal { from { opacity: .4; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  :where(button, a, [role="button"]):active { scale: 1 !important; }
+}
+
+.chat-chart .chat-population-chart { height: 128px; width: 100%; }
